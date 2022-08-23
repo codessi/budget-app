@@ -4,6 +4,9 @@ import {useLocalStorage} from './../hooks/useLocalStorge'
 
 export const BudgetsContext = createContext();
 
+export const UNCATEGORIZED_BUDGET_ID = "uncategorized" 
+
+
 export const useBudgets = () => {
   return useContext(BudgetsContext);
 };
@@ -12,9 +15,11 @@ export const BudgetsContextProvider = ({ children }) => {
   const [budgets, setBudgets] = useLocalStorage("budgets", []);
   const [expenses, setExpenses] = useLocalStorage("expenses", []);
 
-  const getBudgetExpenses = ({budgetId}) => {
+  const getBudgetExpenses = ( budgetId ) => {
+   
     return expenses.filter((expense) => expense.budgetId === budgetId);
   };
+  // this creates an array of all the expese object is intit ? then a it will 
   const addExpense = ({amount, description, budgetId}) => {
     setExpenses((prevExpesne) => [
       ...prevExpesne,
