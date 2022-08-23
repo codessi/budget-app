@@ -15,6 +15,6 @@ export default function UncategorizedBudgetCard({expenses}) {
   console.log('amount:',typeof amount())
 //  console.log(' getBudgetExpenses("uncategorized"):',  getBudgetExpenses("uncategorized"))
   return (
-    <BudgetCard name ="Uncategorized" amount = {amount} gray />
+    <BudgetCard name ="Uncategorized" amount = {amount()} gray />
   )
 }
