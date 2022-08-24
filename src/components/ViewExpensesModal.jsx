@@ -22,7 +22,8 @@ export default function ViewExpensesModal({ show, handleClose, budgetId }) {
   const handleDeleteBudget = () => {
     // match the  BudgetId
     deleteBudget(budgetId);
-  };
+
+    };
   const handleDeleteExpense = (expenseId) => {
     deleteExpense(expenseId);
   };
@@ -34,8 +35,8 @@ export default function ViewExpensesModal({ show, handleClose, budgetId }) {
     name = "Uncategorized";
   } else if (budgetId == undefined) {
     name = "All";
-  } else {
-    name = budgets.find((obj) => obj.budgetId === budgetId).name;
+  } else if(budgetId){
+    name = budgets?.find((obj) => obj.budgetId === budgetId)?.name;
   }
 
   return (

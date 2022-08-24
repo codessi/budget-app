@@ -61,6 +61,8 @@ export const BudgetsContextProvider = ({ children }) => {
     setBudgets(prevBudgets => {
       return prevBudgets.filter(budget => budget.budgetId !== budgetId)
     })
+
+    console.log(budgetId)
    
     // const filtered = budgets.filter(budget => budget.budgetId !== budgetId)
     // setBudgets(filtered)
