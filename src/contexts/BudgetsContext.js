@@ -16,9 +16,28 @@ export const BudgetsContextProvider = ({ children }) => {
   const [expenses, setExpenses] = useLocalStorage("expenses", []);
 
   const getBudgetExpenses = ( budgetId ) => {
-   
-    return expenses.filter((expense) => expense.budgetId === budgetId);
+   // check first if budgetId has category
+    // const expenseWithBudget = budgets.find(budget => budget.budgetID === budgetId)
+    
+    // if(expenseWithBudget){
+    //   return expenses.filter((expense) => expense.budgetId === budgetId);
+    // }
+    // if budgetId we prvide  find in budget 
+    // then take that expense filter
+    return expenses.filter((expense) => expense.budgetId === budgetId)
+    // if expense doesn hav cata then 
+    // fiter all expesn
+    
   };
+  const getUncategorizedExpense = () => {
+    const uncategorizedExpense =[]
+    // go through each expense
+    // make array of budgetId
+      const budgetIds = budgets.map(budget => budget.bugetId)
+    // check exp1 is part of budgetIds
+      //  budgetIds.include(exp[2].budgetId)
+    // exp1 
+  }
   // this creates an array of all the expese object is intit ? then a it will 
   const addExpense = ({amount, description, budgetId}) => {
     setExpenses((prevExpesne) => [
@@ -35,15 +54,18 @@ export const BudgetsContextProvider = ({ children }) => {
     })
   };
 
-  const deleteBudget = ({budgetId}) => {
+  const deleteBudget = (budgetId) => {
     setBudgets(prevBudgets => {
-      prevBudgets.filter(budget => budget.budgetId === budgetId)
+      return prevBudgets.filter(budget => budget.budgetId !== budgetId)
     })
-    
+   
+    // const filtered = budgets.filter(budget => budget.budgetId !== budgetId)
+    // setBudgets(filtered)
+    //  console.log(filtered, "from context delete")
   };
   const deleteExpense = (id) => {
     setExpenses(prevExpenses => {
-      prevExpenses.filter(expense => expense.id === id)
+      return prevExpenses.filter(expense => expense.id !== id)
     })
   };
 
@@ -57,6 +79,7 @@ export const BudgetsContextProvider = ({ children }) => {
         addBudget,
         deleteBudget,
         deleteExpense,
+        getUncategorizedExpense
       }}
     >
       {children}
