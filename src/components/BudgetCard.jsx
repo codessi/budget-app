@@ -22,13 +22,14 @@ export default function BudgetCard({ name, amount, max, gray , onAddExpenseClick
 
         {max && <ProgressBar min={0} max={max} now={amount} className="rounded-pill" variant={getProgressBarVarient(amount, max)} />}
 
-        <Stack direction="horizontal" gap="2" className="mt-4">
+        <Stack direction="horizontal" gap="2" className="mt-4 justify-content-end ">
          {noButton? <></> : <>
-           <Button variant="outline-primary" className="ms-auto" onClick={onAddExpenseClick} >Add Expense</Button>
-            <Button variant="outline-secondary"
+           <Button variant="outline-primary" className="ms-auto" onClick={onAddExpenseClick} >Add Expense</Button> </>}
+          <Button variant="outline-secondary"
+            className="ms-1"
             onClick={onViewExpensesClick}
             >View Expense</Button>
-         </>}
+        
         </Stack>
 
       </Card.Body>

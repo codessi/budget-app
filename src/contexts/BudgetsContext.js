@@ -16,29 +16,18 @@ export const BudgetsContextProvider = ({ children }) => {
   const [expenses, setExpenses] = useLocalStorage("expenses", []);
 
   const getBudgetExpenses = ( budgetId ) => {
-   // check first if budgetId has category
-    // const expenseWithBudget = budgets.find(budget => budget.budgetID === budgetId)
-    
-    // if(expenseWithBudget){
-    //   return expenses.filter((expense) => expense.budgetId === budgetId);
-    // }
-    // if budgetId we prvide  find in budget 
-    // then take that expense filter
+
     return expenses.filter((expense) => expense.budgetId === budgetId)
-    // if expense doesn hav cata then 
-    // fiter all expesn
+
     
   };
   const getUncategorizedExpense = () => {
     const uncategorizedExpense =[]
-    // go through each expense
-    // make array of budgetId
+  
       const budgetIds = budgets.map(budget => budget.bugetId)
-    // check exp1 is part of budgetIds
-      //  budgetIds.include(exp[2].budgetId)
-    // exp1 
+
   }
-  // this creates an array of all the expese object is intit ? then a it will 
+
   const addExpense = ({amount, description, budgetId}) => {
     setExpenses((prevExpesne) => [
       ...prevExpesne,

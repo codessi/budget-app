@@ -7,7 +7,7 @@ import BudgetCard from './BudgetCard'
 //  -- total of all expense 
 //  -- bar
 //  -- no add or view button  
-export default function TotalBudgetCard() {
+export default function TotalBudgetCard({onViewExpensesClick}) {
   const { budgets, expenses } = useBudgets()
   const max = budgets.reduce((total, budget) => { return total + parseFloat(budget.max) }, 0)
 
@@ -16,6 +16,6 @@ export default function TotalBudgetCard() {
   
 
   return (
-    <BudgetCard name = "Total Budget" max={max} amount={tExpense} noButton />
+    <BudgetCard name = "Total Budget" max={max} amount={tExpense} noButton onViewExpensesClick={onViewExpensesClick}/>
   )
 }

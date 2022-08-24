@@ -76,7 +76,9 @@ function App() {
               openViewExpensesModal(UNCATEGORIZED_BUDGET_ID)
             }
           />
-          <TotalBudgetCard />
+          <TotalBudgetCard   onViewExpensesClick={() =>
+              openViewExpensesModal()
+            } />
         </div>
       </Container>
       <AddBudgetModal

@@ -1,14 +1,23 @@
 import { Button, Modal } from "react-bootstrap";
 
-import { useBudgets } from "../contexts/BudgetsContext";
+import {
+  UNCATEGORIZED_BUDGET_ID,
+  useBudgets,
+} from "../contexts/BudgetsContext";
 import { currencyFormatter } from "./../utils";
 
 export default function ViewExpensesModal({ show, handleClose, budgetId }) {
-  const { getBudgetExpenses, budgets, deleteBudget, deleteExpense } =
+  const { getBudgetExpenses, expenses, deleteBudget, deleteExpense, budgets } =
     useBudgets();
 
-  const expensesArr = getBudgetExpenses(budgetId);
-  console.log("expensesArr :", expensesArr);
+  let expensesArr = () => {
+    if (budgetId !== undefined) {
+      return getBudgetExpenses(budgetId);
+    }
+    return expenses;
+  };
+  // console.log(budgets.find(budgetId)
+  expensesArr = expensesArr();
 
   const handleDeleteBudget = () => {
     // match the  BudgetId
@@ -18,11 +27,24 @@ export default function ViewExpensesModal({ show, handleClose, budgetId }) {
     deleteExpense(expenseId);
   };
 
+
+  let name;
+
+  if (budgetId == UNCATEGORIZED_BUDGET_ID) {
+    name = "Uncategorized";
+  } else if (budgetId == undefined) {
+    name = "All";
+  } else {
+    name = budgets.find((obj) => obj.budgetId === budgetId).name;
+  }
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Expense </Modal.Title>
-        <Button onClick={handleDeleteBudget}>Delete Budget</Button>
+        <Modal.Title>{name} Expense </Modal.Title>
+        <Button size="sm" className="ms-auto" onClick={handleDeleteBudget}>
+          Delete Budget
+        </Button>
       </Modal.Header>
       <Modal.Body>
         <div>
