@@ -31,7 +31,7 @@ function App() {
   const amount = (budgetId) => {
     const expenseObjArr = getBudgetExpenses(budgetId);
     const result = expenseObjArr.reduce((total, expense) => {
-      return parseFloat(total + expense.amount);
+      return total + parseFloat( expense.amount);
     }, 0);
 
     return result;

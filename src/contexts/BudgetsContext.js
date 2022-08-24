@@ -17,6 +17,20 @@ export const BudgetsContextProvider = ({ children }) => {
 
   const getBudgetExpenses = ( budgetId ) => {
 
+    //if budgetId of exp does exit in budget list 
+    if (budgetId === UNCATEGORIZED_BUDGET_ID) {
+      let array = []
+      expenses.forEach(expense => 
+      {
+        const found = budgets.find(budget => budget.budgetId !== expense.budgetId)
+        if(found){array.push(expense)}
+      }
+        
+        )
+        console.log(array)
+      // budgets
+      return array
+    }
     return expenses.filter((expense) => expense.budgetId === budgetId)
 
     
