@@ -21,7 +21,7 @@ export const BudgetsContextProvider = ({ children }) => {
   };
 
   const getBudgetExpenses = (budgetId) => {
-    return expenses.filter((expense) => expense.budgetId === budgetId);
+    return expenses.filter((expense) => expense?.budgetId === budgetId);
   };
 
   const addExpense = ({ amount, description, budgetId }) => {
@@ -43,8 +43,11 @@ export const BudgetsContextProvider = ({ children }) => {
     setExpenses(
       expenses.map((expense) => {
         if (expense.budgetId == budgetId) {
+
           return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
         }
+        return expense
+      
       })
     );
 
