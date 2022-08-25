@@ -16,7 +16,7 @@ export default function ViewExpensesModal({ show, handleClose, budgetId }) {
     }
     return expenses;
   };
-  // console.log(budgets.find(budgetId)
+  
   expensesArr = expensesArr();
 
   const handleDeleteBudget = () => {
@@ -28,7 +28,7 @@ export default function ViewExpensesModal({ show, handleClose, budgetId }) {
     deleteExpense(expenseId);
   };
 
-
+  // 
   let name;
 
   if (budgetId == UNCATEGORIZED_BUDGET_ID) {
@@ -39,13 +39,15 @@ export default function ViewExpensesModal({ show, handleClose, budgetId }) {
     name = budgets?.find((obj) => obj.budgetId === budgetId)?.name;
   }
 
+
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{name} Expense </Modal.Title>
-        <Button size="sm" className="ms-auto" onClick={handleDeleteBudget}>
+        { budgetId !== UNCATEGORIZED_BUDGET_ID && budgetId !== undefined ?<Button size="sm" className="ms-auto" onClick={handleDeleteBudget}>
           Delete Budget
-        </Button>
+        </Button>: <></>}
       </Modal.Header>
       <Modal.Body>
         <div>

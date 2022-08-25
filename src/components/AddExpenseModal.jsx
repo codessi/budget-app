@@ -19,9 +19,13 @@ export default function AddExpenseModal({ show, handleClose, defaultBudgetId }) 
       amount: amountRef.current.value,
       budgetId: budgetIdRef.current.value 
     });
+    
+
     handleClose();
     
   };
+
+    // console.log("fromExpensModal  ",budgetIdRef?.current?.value)
 
   return (
     <Modal show={show} onHide={handleClose}>
