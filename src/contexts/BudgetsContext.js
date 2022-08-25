@@ -40,13 +40,20 @@ export const BudgetsContextProvider = ({ children }) => {
   };
 
   const deleteBudget = (budgetId) => {
-// go through expens and if the expense has this buget id set it with new catagory 
-    // setExpenses(expense => )
+    setExpenses(
+      expenses.map((expense) => {
+        if (expense.budgetId == budgetId) {
+          return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+        }
+      })
+    );
 
     setBudgets((prevBudgets) => {
       return prevBudgets.filter((budget) => budget.budgetId !== budgetId);
     });
   };
+
+  
   const deleteExpense = (id) => {
     setExpenses((prevExpenses) => {
       return prevExpenses.filter((expense) => expense.id !== id);
