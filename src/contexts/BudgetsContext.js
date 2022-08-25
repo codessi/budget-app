@@ -21,30 +21,12 @@ export const BudgetsContextProvider = ({ children }) => {
   };
 
   const getBudgetExpenses = (budgetId) => {
-    //if budgetId of exp does exit in budget list
-    if (budgetId === UNCATEGORIZED_BUDGET_ID) {
-      let array = [];
-      if (budgets !==[])
-      {budgets.forEach((budget) => {
-        const found = expenses.find(
-          (expense) => expense.budgetId !== budget.budgetId
-        );
-        // found that budge that has not same as id
-        console.log("found is ", found);
-
-        array.push(parseFloat(found.amount));
-      });
-       
-      // if (budgets ===[])  {return array;}
-      }
-      return expenses.map(expense => parseFloat(expense.amount)) 
-    }
     return expenses.filter((expense) => expense.budgetId === budgetId);
   };
 
   const addExpense = ({ amount, description, budgetId }) => {
-    setExpenses((prevExpesne) => [
-      ...prevExpesne,
+    setExpenses((prevExpense) => [
+      ...prevExpense,
       { id: uuidv4(), amount, description, budgetId },
     ]);
   };
@@ -58,6 +40,9 @@ export const BudgetsContextProvider = ({ children }) => {
   };
 
   const deleteBudget = (budgetId) => {
+// go through expens and if the expense has this buget id set it with new catagory 
+    // setExpenses(expense => )
+
     setBudgets((prevBudgets) => {
       return prevBudgets.filter((budget) => budget.budgetId !== budgetId);
     });
