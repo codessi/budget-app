@@ -7,7 +7,7 @@ import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext";
 import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard";
 import TotalBudgetCard from "./components/TotalBudgetCard";
 import ViewExpensesModal from "./components/ViewExpensesModal";
-
+// test test
 function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <>
-      <Container className="my-4">
+      <Container className="my-4 w-75">
         <Stack direction="horizontal" gap="2" className="mb-4">
           <h1 className="me-auto">Budget</h1>
           <Button varient="primary" onClick={() => setShowAddBudgetModal(true)}>
